@@ -25,6 +25,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $unit->name }}</td>
+                                <td>{{ $unit->code }}</td>
                                 <td>{{ $unit->description }}</td>
                                 <td>
                                     <img  src="{{ asset($unit->image) }}" alt="{{ $unit->name }}" height="100px">

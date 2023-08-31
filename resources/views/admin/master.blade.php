@@ -97,6 +97,7 @@
             minHeight: null, // set minimum height of editor
             maxHeight: null, // set maximum height of editor
             focus: false // set focus to editable area after initializing summernote
+
         });
         // Basic
 
@@ -136,7 +137,10 @@
             } else {
                 drDestroy.init();
             }
-        })
+        });
+        $('.inline-editor').summernote({
+            airMode: true
+        });
     });
 
 
@@ -152,7 +156,17 @@
                     data: {id: categoryId},
                     dataType: "JSON",
                     success: function (response) {
-                        console.log(response);
+                        var subCategoryId = $('#subCategoryId');
+                        subCategoryId.empty();
+                        var option = '';
+                        option += '<option value="" disabled selected>--select Subcategory--</option>';
+                        $.each(response, function (key, value) {
+                            option += '<option value='+value.id+'>'+value.name+'</option>';
+                        });
+
+                        subCategoryId.append(option);
+
+
 
                     }
 

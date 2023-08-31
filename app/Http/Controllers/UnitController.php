@@ -38,13 +38,13 @@ class UnitController extends Controller
     }
     public function update(Request $request, $id)
     {
-        Unit::updateunit($request, $id);
+        Unit::updateUnit($request, $id);
 //        return redirect('admin.unit.add')->with('message','Info Updated Successfully');
         return redirect('unit/manage')->with('message', 'successfully Updated');
     }
     public function delete($id)
     {
-        Unit::deleteCategory($id);
+        Unit::deleteUnit($id);
         return redirect('unit/manage')->with('message', 'unit Deleted Successfully');
     }
 }

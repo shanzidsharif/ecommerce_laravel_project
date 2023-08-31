@@ -26,7 +26,7 @@
                         <div class="form-group row">
                             <label for="" class="col-sm-3 control-label">Sub Category Name <span class="text-danger">*</span></label>
                             <div class="col-sm-9">
-                                <select class="form-control" name="sub_category_id" >
+                                <select class="form-control" name="sub_category_id" id="subCategoryId" >
                                     <option class="text-center" value=""disabled selected>-- Select Category --</option>
                                     @foreach($sub_categories as $sub_category)
 
@@ -110,13 +110,19 @@
                         <div class="form-group row">
                             <label for="exampleInputEmail31" class="col-sm-3 control-label">Long Description <span class="text-danger">*</span></label>
                             <div class="col-sm-9">
-                                <textarea  class="form-control summernote" name="short_description" id="exampleInputEmail31" placeholder="Long Description"></textarea>
+                                <textarea  class="form-control summernote ml-2" name="long_description" id="exampleInputEmail31" placeholder="Long Description"></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="form-label col-sm-3 control-label" for="web">Feature Image</label>
                             <div class="col-sm-9">
-                                <input type="file" name="image" id="input-file-now" class="dropify" />
+                                <input type="file" name="image" id="input-file-now" class="dropify" accept="image/*"/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="form-label col-sm-3 control-label" for="web">Other Image</label>
+                            <div class="col-sm-9">
+                                <input type="file" name="other_image[]" id="input-file-now" class="dropify" multiple accept="image/*" />
                             </div>
                         </div>
                         <div class="form-group row">

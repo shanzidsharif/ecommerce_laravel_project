@@ -8,7 +8,7 @@
                     <h4 class="card-title">Add Unit Form</h4>
                     <h5> {{ session('message') }}</h5>
                     <hr>
-                    <form class="form-horizontal p-t-20" action="{{ route('category.new') }}"  method="post" enctype="multipart/form-data">
+                    <form class="form-horizontal p-t-20" action="{{ route('unit.new') }}"  method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
                             <label for="exampleInputuname3" class="col-sm-3 control-label">Unit Name <span class="text-danger">*</span></label>

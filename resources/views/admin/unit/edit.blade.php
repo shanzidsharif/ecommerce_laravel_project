@@ -8,33 +8,34 @@
                     <h4 class="card-title">Add Category Form</h4>
 
                     <hr>
-                    <form class="form-horizontal p-t-20" action="{{ route('category.update',['id'=>$category->id]) }}"  method="post" enctype="multipart/form-data">
+                    <form class="form-horizontal p-t-20" action="{{ route('unit.update',['id'=>$unit->id]) }}"  method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
-                            <label for="exampleInputuname3" class="col-sm-3 control-label">Category Name <span class="text-danger">*</span></label>
+                            <label for="exampleInputuname3" class="col-sm-3 control-label">Unit Name <span class="text-danger">*</span></label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="name" value="{{ $category->name }}" id="exampleInputuname3" placeholder="Category Name">
+                                <input type="text" class="form-control" name="name" value="{{ $unit->name }}" id="exampleInputuname3" placeholder="Category Name">
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="exampleInputuname4" class="col-sm-3 control-label">Unit Code <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="code" value="{{ $unit->code }}" id="exampleInputunam4" placeholder="Category Name">
 
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="exampleInputEmail3" class="col-sm-3 control-label">Category Description <span class="text-danger">*</span></label>
                             <div class="col-sm-9">
-                                <textarea  class="form-control" name="description" id="exampleInputEmail3" placeholder="Descriptin">{{ $category->description }}</textarea>
+                                <textarea  class="form-control" name="description" id="exampleInputEmail3" placeholder="Descriptin">{{ $unit->description }}</textarea>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="form-label col-sm-3 control-label" for="web">Image</label>
-                            <div class="col-sm-9">
-                                <input type="file" name="image" id="input-file-now" class="dropify" />
-                                <img src="{{ asset($category->image) }}" alt="" height="100" width="130"/>
-                            </div>
-                        </div>
+
                         <div class="form-group row">
                             <label class="form-label col-sm-3 control-label" for="web">Publication Status</label>
                             <div class="form-label col-sm-9">
-                                <label class="me-3"><input type="radio"{{ $category->status==1 ? 'checked':'' }} name="status" value="1"  >Published</label>
-                                <label><input type="radio" {{ $category->status==2 ? 'checked':'' }} name="status" value="2" >Unpublished</label>
+                                <label class="me-3"><input type="radio"{{ $unit->status==1 ? 'checked':'' }} name="status" value="1"  >Published</label>
+                                <label><input type="radio" {{ $unit->status==2 ? 'checked':'' }} name="status" value="2" >Unpublished</label>
                             </div>
                         </div>
 

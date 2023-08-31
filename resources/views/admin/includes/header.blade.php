@@ -268,7 +268,7 @@
                         <!-- text-->
                         <div class="dropdown-divider"></div>
                         <!-- text-->
-                        <a href="" class="dropdown-item" onclick="event.preventDefault() ;document.getElementById('logoutForm').submit()"><i class="fa fa-power-off"></i> Logout</a>
+                        <a href="" class="dropdown-item" onclick="event.preventDefault() ;document.getElementById('logoutForm').submit()" ><i class="fa fa-power-off"></i> Logout</a>
                         <form action="{{ route('logout') }}" method="POST" id="logoutForm">
                             @csrf
                         </form>

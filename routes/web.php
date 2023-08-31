@@ -10,6 +10,9 @@ use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CustomerAuthController;
+use App\Http\Controllers\CustomerOrderController;
+use App\Http\Controllers\SslCommerzPaymentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,10 +24,39 @@ use App\Http\Controllers\ProductController;
 |
 */
 Route::get('/',[MyCommerceController::class, 'index'])->name('home');
-Route::get('/product-category',[MyCommerceController::class, 'category'])->name('product-category');
-Route::get('/product-detail',[MyCommerceController::class, 'detail'])->name('product-detail');
-Route::get('/show-cart',[CartController::class, 'index'])->name('show-cart');
+Route::get('/product-category/{id}',[MyCommerceController::class, 'category'])->name('product-category');
+Route::get('/product-detail/{id}',[MyCommerceController::class, 'detail'])->name('product-detail');
+Route::post('/add-to-cart/{id}',[CartController::class, 'index'])->name('add-to-cart');
+Route::get('/remove-cart/{id}',[CartController::class, 'remove'])->name('remove-cart');
+Route::get('/show-cart',[CartController::class, 'show'])->name('show-cart');
+Route::post('/update-show-cart/{id}',[CartController::class, 'update'])->name('update-show-cart');
 Route::get('/checkout',[CheckoutController::class, 'index'])->name('checkout');
+Route::post('/cash-on-delivery',[CheckoutController::class, 'cashOnDelivery'])->name('cash-on-delivery');
+Route::get('/complete-order',[CheckoutController::class, 'completeOrder'])->name('complete-order');
+
+
+Route::get('/customer-login',[CustomerAuthController::class, 'index'])->name('customer.login');
+Route::post('/customer-login',[CustomerAuthController::class, 'login'])->name('customer.login');
+Route::post('/customer-register',[CustomerAuthController::class, 'register'])->name('customer.register');
+Route::get('/customer-dashboard',[CustomerAuthController::class, 'dashboard'])->name('customer.dashboard');
+Route::get('/customer-profile',[CustomerAuthController::class, 'profile'])->name('customer.profile');
+Route::get('/customer-logout',[CustomerAuthController::class, 'logout'])->name('customer.logout');
+Route::get('/customer-order',[CustomerOrderController::class, 'allOrder'])->name('customer.order');
+
+
+// SSLCOMMERZ Start
+Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+
+Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+//SSLCOMMERZ END
 
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
@@ -63,6 +95,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/product/get-subcategory-by-category',[ProductController::class, 'getSubcategoryByCategory'])->name('get-subcategory-by-category');
     Route::post('/product/new',[ProductController::class, 'create'])->name('product.new');
     Route::get('/product/edit/{id}',[ProductController::class, 'edit'])->name('product.edit');
+    Route::get('/product/detail/{id}',[ProductController::class, 'detail'])->name('product.detail');
     Route::post('/product/update/{id}',[ProductController::class, 'update'])->name('product.update');
     Route::get('/product/delete/{id}',[ProductController::class, 'delete'])->name('product.delete');
     Route::get('/product/manage',[ProductController::class, 'manage'])->name('product.manage');
